@@ -15,7 +15,7 @@ class NoteListCreate(generics.ListCreateAPIView):
 
     def get_queryset(self):
         user=self.request.user
-        return Note.objects.filter(author=user)
+        return Note.objects.filter(author=user).order_by('to_date')
     
     def perform_create(self, serializer):
         # print(self.request.user)
